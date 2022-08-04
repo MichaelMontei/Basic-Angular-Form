@@ -8,27 +8,19 @@
   <title>Form</title>
 </head>
 <body>
-
+{{ friend | json }}
 <h1>Friend Book Form</h1>
 
-<form id="Form" method="POST">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" ><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" ><br>
-  <label for="email">Email:</label><br>
-  <input type="email" id="email" name="email" ><br>
-  <label for="PhoneNumber">Phone Number:</label><br>
-  <input type="phoneNumber" id="phoneNumber" name="phoneNumber" ><br><br>
+<form #formName="ngForm" id="Form" method="POST">
+  <input type="text" placeholder="First name" name="firstname" #firstName="ngModel"  [(ngModel)]="friend.firstName" required><br>
 
-  <select width=300
-          style="width: 350px">
-    <option value='html'>HTML</option>
-    <option value='css'>CSS</option>
-    <option value='js'>JS</option>
-    <option value='php'>PHP</option>
-  </select> <br><br>
+  <input #lastname="ngModel" type="text" id="lastname" name="lastname" [(ngModel)]="friend.lastName" required><br>
 
+  <input #email="ngModel" type="email" id="email" name="email" [(ngModel)]="friend.email" required><br>
+
+  <input #phoneNumber="ngModel" type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="friend.phoneNumber" required><br><br>
+
+  <app-dropdown></app-dropdown>
 
   <button>Submit</button>
 </form>

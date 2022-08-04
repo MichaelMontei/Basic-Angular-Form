@@ -1,0 +1,7 @@
+<h3>Choose Your Favorite Language</h3>
+<select #language (change)="update($event)">
+  <option value="default">----</option>
+  <option *ngFor="let language of languages" [value]="language">
+    {{language}}
+  </option>
+</select>
