@@ -9,22 +9,41 @@
 </head>
 <body>
 {{ friend | json }}
+<div id="container">
 <h1>Friend Book Form</h1>
 
-<form #formName="ngForm" id="Form" method="POST">
-  <input type="text" placeholder="First name" name="firstname" #firstName="ngModel"  [(ngModel)]="friend.firstName" required><br>
+  <form novalidate #friendForm="ngForm" (ngSubmit)="submitForm()">
 
-  <input #lastname="ngModel" type="text" id="lastname" name="lastname" [(ngModel)]="friend.lastName" required><br>
+  <input type ="text" placeholder ="First name:" name="firstName"
+         #firstName="ngModel" ngModel [(ngModel)]="friend.firstName" pattern="[a-zA-Z' ]*" [class.invalid]="firstName.invalid && firstName.touched"  required><br><br>
+  <div *ngIf="firstName.invalid && firstName.touched" class="error">Please Fill in your firstName and only use letters!</div>
 
-  <input #email="ngModel" type="email" id="email" name="email" [(ngModel)]="friend.email" required><br>
+  <input type ="text" placeholder ="Last name:" name="lastName"
+         #lastName="ngModel" ngModel [(ngModel)]="friend.lastName" pattern="[a-zA-Z' ]*" [class.invalid]="lastName.invalid && lastName.touched" required><br><br>
+  <div *ngIf="lastName.invalid && lastName.touched" class="error">Please Fill in your lastName and only use letters!</div>
 
-  <input #phoneNumber="ngModel" type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="friend.phoneNumber" required><br><br>
+  <input type ="text" placeholder ="Email:" name="email"
+         #email="ngModel" ngModel [(ngModel)]="friend.email" [email]="true" [class.invalid]="email.invalid && email.touched" required><br><br>
+    <div *ngIf="email.invalid && email.touched" class="error">Email address is required!</div>
 
-  <app-dropdown></app-dropdown>
+    <input type ="text" placeholder ="Phone number:" name="phoneNumber"
+         #phoneNumber="ngModel" ngModel [(ngModel)]="friend.phoneNumber" pattern="[+ 0-9]*" [class.invalid]="phoneNumber.invalid && phoneNumber.touched" required><br><br>
+    <div *ngIf="phoneNumber.invalid && phoneNumber.touched" class="error">PhoneNumber is required and only use numbers!</div>
 
-  <button>Submit</button>
+
+  <label for="favouriteLanguage">My favourite language is:</label>
+  <select name="favouriteLanguage" id="favouriteLanguage"
+          #favouriteLanguage="ngModel" ngModel [(ngModel)]="friend.favouriteLanguage" [class.invalid]="favouriteLanguage.invalid && favouriteLanguage.touched" required>
+    <option  *ngFor="let language of languageArray; let i = index">
+      {{ language }}
+    </option>
+  </select><br><br>
+    <div *ngIf="favouriteLanguage.invalid && favouriteLanguage.touched" class="error">Please select your favourite language!</div>
+
+
+  <button type ="submit" name="submitForm" [disabled]="friendForm.form.invalid">Submit</button>
 </form>
-
+</div>
 
 </body>
 </html>
