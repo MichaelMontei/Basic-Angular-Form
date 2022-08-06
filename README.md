@@ -1,5 +1,8 @@
 # Basic-Angular-Form
 Learning Angular 
+![Angular](images/Angular.png)
+
+### Introduction into Framework Angular
 
 
 ### Steps
@@ -109,24 +112,4 @@ Step 5: Go inside of the "project-name" folder and run the command ng serve --po
 
 Step 7: Empty the "AppComponent" class and the template. The template file should be completely empty. Inside of the AppComponent class you'll write your logic and in the template you can use it and write the html.
 
-# Exercise Steps
 
-Step 8: In the HTML file, add a form with the required inputs at least. Go take a look at the must haves to see which are required. Don't forget a submit button, make it a regular button, not an input type button!
-- Made a form in the app.component.html and a regular button.
-
-Step 9: You might have already added a select input for the languages with the options inside of it. This can be optimised by putting the names of the languages inside of an array in your component class. Next, you can use the ngFor loop to generate all the options, way more efficient right?
-- Made a new component in Angular with the "ng-generate-languages" command.
-- After this, in the languages.component.ts I added an array of languages.
-- In the languages.component.html I added a *ngfor to loop over the languages. 
-- I show the languages on our app.component.html by adding the selector's name from our languages.component.ts file.
-
-Step 10: 
-[  Added the FormsModule to app.module.ts and the imports array.
-- Also added #formName="ngForm" to the form.
-- #inputName="ngModel" added to every input tag.
-- putted ngModel in every input
-- We can test if everything is working by putting {{ formName.value | json }} at the top of the html file.
-  ![picture](Images/FriendBookPNG.PNG)
-
-STEP 11: 
-- 
