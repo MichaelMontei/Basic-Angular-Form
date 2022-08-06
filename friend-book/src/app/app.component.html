@@ -12,7 +12,7 @@
 <div id="container">
 <h1>Friend Book Form</h1>
 
-  <form novalidate #friendForm="ngForm" (ngSubmit)="submitForm()">
+  <form novalidate #friendForm="ngForm" method="post" (ngSubmit)="submitForm()">
 
   <input type ="text" placeholder ="First name:" name="firstName"
          #firstName="ngModel" ngModel [(ngModel)]="friend.firstName" pattern="[a-zA-Z' ]*" [class.invalid]="firstName.invalid && firstName.touched"  required><br><br>

@@ -15,6 +15,6 @@ export class AddFriendService {
   }
 
   addFriend(friend: Friend) {
-    return this._http.post(this._url, friend);
+    return this._http.post(this._url + 'allFriends', friend);
   }
 }

@@ -24,8 +24,16 @@ app.get('/', function (request, response) {
     response.send('Hello from server');
 });
 
+app.get("/allFriends", (req, res) => {
+    res.send(allFriends);
+});
+
 app.post('/', function (request, response) {
     response.status(200).send({"message": "Data received"});
+});
+
+app.post("/allFriends", (req, res) => {
+    allFriends.push(req.body);
 });
 
 
