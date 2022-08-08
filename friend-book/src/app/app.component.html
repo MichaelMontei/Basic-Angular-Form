@@ -38,7 +38,10 @@
       {{ language }}
     </option>
   </select><br><br>
-    <div *ngIf="favouriteLanguage.invalid && favouriteLanguage.touched" class="error">Please select your favourite language!</div>
+<!--    <div *ngIf="favouriteLanguage.invalid && favouriteLanguage.touched" class="error">Please select your favourite language!</div>-->
+    <div *ngFor="let friend of allFriends">
+      {{friend._email}}
+    </div>
 
 
   <button type ="submit" name="submitForm" [disabled]="friendForm.form.invalid">Submit</button>
