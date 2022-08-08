@@ -101,14 +101,81 @@ Step 2: Check if you have node.js and npm, if not, install them.
   - node: node -v or node -version
   - npm: npm -v or npm -version
   
-
 Step 3: Install the Angular cli with npm install -g @angular/cli and check afterwards if you have it with ng version
-
 
 Step 4: Navigate to the root of your clone of this repository in the terminal and enter the command ng new project-name. You should now have 2 folders called "server", your node API, and "project-name", your angular app.
 
 Step 5: Go inside of the "project-name" folder and run the command ng serve --port 4500. You can now check out your angular app on localhost:4500.
 
+# Excercise Steps
+
 Step 7: Empty the "AppComponent" class and the template. The template file should be completely empty. Inside of the AppComponent class you'll write your logic and in the template you can use it and write the html.
 
+Step 8: Make the form in the html file with the needed properties and a regular button.
 
+step 9: We make the *ngFor Loop with the languages array from the component.
+```js
+// App Component languageArray
+export class AppComponent implements onInit {
+  languageArray = ['HTML', 'CSS', 'JS', 'PHP', 'KLINGON', 'TYPESCRIPT', 'C++'];
+}
+
+//Implement in the component html 
+ <option  *ngFor="let language of languageArray; let i = index">
+      {{ language }}
+    </option>
+
+```
+
+step 10: import the FormsModule into the app.module.ts - then add a #formName="ngForm" Variable - Lastly add #inputName="ngModel" to all of your input tags.
+```js
+//import the data yes
+import { FormsModule  } from '@angular/forms';
+
+//make Html conform 
+<form novalidate #friendForm="ngForm"></form>
+<input type ="text" placeholder ="First name:" name="firstName" #firstName="ngModel">
+
+```
+
+Step 11: Generate a new class Friend + properties conforming your Form -> Then we can add the following to your inputs [(ngModel)]="friendModel.propertyName" -> add at the top {{ friendModel | json }}
+```js
+//Make new class with the properties 
+
+export class Friend {
+  private _firstName : string | null;
+  private _lastName : string | null;
+  private _email : string | null;
+  private _phoneNumber : number | null;
+  private _favouriteLanguage : string | null;
+
+  constructor(firstName : string | null, lastName : string | null, email : string | null, phoneNumber : number | null, favouriteLanguage : string | null) {
+    this._firstName = firstName;
+    this._lastName = lastName;
+    this._email = email;
+    this._phoneNumber = phoneNumber;
+    this._favouriteLanguage = favouriteLanguage;
+  }
+  
+  // we add the following to the inputs 
+  [(ngModel)]="friend.firstName";
+  
+  // in the body on top we add 
+    {{ friend | json }}
+
+```
+
+Step 12: REGEX is muy importante and make all the input tag INVALID when not filled in or not with the right regex!
+```js
+//regex pattern for the firstname 
+pattern="[a-zA-Z' ]*"
+
+// Make the class.invalid to be required
+[class.invalid]="firstName.invalid && firstName.touched"  required><br><br>
+        
+//Lets make and if statement to check if invalid or not touched.
+ <div *ngIf="firstName.invalid && firstName.touched" class="error">Please Fill in your firstName and only use letters!</div>
+
+```
+
+Step 13: 
