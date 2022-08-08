@@ -1,7 +1,6 @@
 # Basic-Angular-Form
 Learning Angular
-![](C:\Users\zeebr\Desktop\Be-Code Projects\Basic-Angular-Form\Images\angularscreen.png)(./images/angularscreen.png
-
+![](Images/angularscreen.png)
 ### Introduction into Framework Angular
 
 
